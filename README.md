@@ -70,10 +70,59 @@ Display original color image, histogram, enhanced image, and enhanced histogram 
 ## Program
 
 ### Developed By:
-**Name:** ____________________________  
+**Name:SACHIN M**   
 
-### Register No:
-____________________________  
+### Register No: 212223040177
+
+```
+
+import cv2
+from matplotlib import pyplot as plt
+
+image = cv2.imread(r"/content/IMG_8281.JPG.jpeg")
+
+if image is None:
+    print("Error: Image not found or path is incorrect.")
+else:
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    plt.figure(figsize=(6, 6))
+    plt.imshow(gray_image, cmap='gray')
+    plt.title('Original Grayscale Image')
+    plt.axis('off')
+    plt.show()
+
+hist_original = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
+
+plt.figure(figsize=(6, 4))
+plt.plot(hist_original, color='black')
+plt.title('Original Histogram')
+plt.xlabel('Pixel Intensity')
+plt.ylabel('Frequency')
+plt.xlim([0, 256])
+plt.grid(True)
+plt.show()
+
+equalized_image = cv2.equalizeHist(gray_image)
+
+plt.figure(figsize=(6, 6))
+plt.imshow(equalized_image, cmap='gray') 
+plt.title('Equalized Image')
+plt.axis('off')
+plt.show()
+
+hist_equalized = cv2.calcHist([equalized_image], [0], None, [256], [0, 256])
+
+plt.figure(figsize=(6, 4))
+plt.plot(hist_equalized, color='black')
+plt.title('Equalized Histogram')
+plt.xlabel('Pixel Intensity')
+plt.ylabel('Frequency')
+plt.xlim([0, 256])
+plt.grid(True)
+plt.show()
+
+```
 
 ---
 
@@ -81,17 +130,27 @@ ____________________________
 
 ### Grayscale Histogram Equalization
 
-- Original grayscale image is displayed  
-- Histogram of original grayscale image is plotted  
-- Enhanced image after histogram equalization is displayed  
-- Histogram of enhanced grayscale image shows improved contrast  
+- Original grayscale image is displayed
 
-### Color Image Histogram Equalization
+  
+  <img width="688" height="397" alt="image" src="https://github.com/user-attachments/assets/9dec16ef-b879-47e6-ab3c-a3d382054e31" />
 
-- Original color image is displayed  
-- Histogram of B, G, R channels is plotted  
-- Enhanced image after HSV-based equalization is displayed  
-- Histogram of enhanced image shows better intensity distribution  
+- Histogram of original grayscale image is plotted
+
+  
+  <img width="885" height="488" alt="image" src="https://github.com/user-attachments/assets/0359dc28-48e1-48bb-94fb-4fdc826ffdae" />
+
+- Enhanced image after histogram equalization is displayed
+
+  
+  <img width="722" height="382" alt="image" src="https://github.com/user-attachments/assets/f51ab819-2756-4ed0-8dd1-2ac60f4cbb68" />
+
+- Histogram of enhanced grayscale image shows improved contrast
+
+  
+  <img width="808" height="523" alt="image" src="https://github.com/user-attachments/assets/7cf17bb5-d3c3-489c-85e9-cd0e34b29b28" />
+
+
 
 ---
 
